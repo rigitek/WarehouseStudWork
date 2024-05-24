@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Windows\" />
+    <Folder Include="Windows\Client\" />
   </ItemGroup>
 
 </Project>

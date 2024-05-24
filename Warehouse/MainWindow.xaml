@@ -5,8 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Warehouse"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="150" Width="250">
     <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="200">
 
+            <Button x:Name="ClientButton" 
+            FontWeight="Bold"
+            Content="Клиент"
+            Margin="5"
+            Height="40"
+            Click="Client_Click"/>
+
+            <Button x:Name="AdminButton" 
+            FontWeight="Bold"
+            Content="Администратор"
+            Margin="5"
+            Height="40"
+            Click="Admin_Click"/>
+        </StackPanel>
     </Grid>
 </Window>

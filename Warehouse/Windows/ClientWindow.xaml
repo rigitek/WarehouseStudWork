@@ -1,0 +1,41 @@
+﻿<Window x:Class="Warehouse.Windows.ClientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Warehouse.Windows"
+        mc:Ignorable="d"
+        Title="ClientWindow" Height="250" Width="250">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="200">
+
+            <Button x:Name="Products_Button" 
+FontWeight="Bold"
+Content="Товары"
+Margin="5"
+Height="40"
+Click="Products_Click"/>
+
+            <Button x:Name="ShopCart_Button" 
+     FontWeight="Bold"
+     Content="Корзина"
+     Margin="5"
+     Height="40"
+     Click="ShopCart_Click"/>
+
+            <Button x:Name="Delivery_Button" 
+     FontWeight="Bold"
+     Content="Доставка"
+     Margin="5"
+     Height="40"
+     Click="Delivery_Click"/>
+
+            <Button x:Name="Back_Button" 
+FontWeight="Bold"
+Content="Назад"
+Margin="5"
+Height="40"
+Click="Back_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

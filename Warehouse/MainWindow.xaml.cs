@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Warehouse.Windows;
 
 namespace Warehouse
 {
@@ -20,5 +21,20 @@ namespace Warehouse
         {
             InitializeComponent();
         }
+
+        private void Client_Click(object sender, RoutedEventArgs e)
+        {
+            ClientWindow clientWindow = new ClientWindow();
+            this.Close();
+            clientWindow.Show();
+        }
+
+        private void Admin_Click(object sender, RoutedEventArgs e)
+        {
+            AdminWindow adminWindow = new AdminWindow();
+            this.Close();
+            adminWindow.Show();
+        }
+
     }
 }
