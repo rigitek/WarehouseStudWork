@@ -10,6 +10,8 @@
         <Menu>
             <MenuItem Header="Назад" Click="Back_Click"/>
             <MenuItem Header="Добавить" Click="Add_Click"/>
+            <MenuItem Header="Изменить" Click="Edit_Click"/>
+            <MenuItem Header="Удалить" Click="Delete_Click"/>
         </Menu>
         <DataGrid x:Name="productsGrid" ItemsSource="{Binding}" Margin="0 20 0 0"></DataGrid>
     </Grid>
