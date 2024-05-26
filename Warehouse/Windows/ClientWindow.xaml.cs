@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Warehouse.Windows.Client;
 
 namespace Warehouse.Windows
 {
@@ -25,11 +26,15 @@ namespace Warehouse.Windows
         }
         private void Products_Click(object sender, RoutedEventArgs e)
         {
-            
+            ProductsWindow productsWindow = new ProductsWindow();
+            this.Close();
+            productsWindow.Show();
         }
         private void ShopCart_Click(object sender, RoutedEventArgs e)
         {
-            
+            ShopCartWindow shopCartWindow = new ShopCartWindow();
+            this.Close();
+            shopCartWindow.Show();
         }
         private void Delivery_Click(object sender, RoutedEventArgs e)
         {

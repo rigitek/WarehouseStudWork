@@ -11,6 +11,7 @@ namespace Warehouse.Models
         public int Id { get; set; }
         public DateTime Date { get; set; }
         public double Price { get; set; }
+        public List<Product> Products { get; set; }
 
     }
 }

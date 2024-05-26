@@ -10,10 +10,11 @@ namespace Warehouse.Models
     internal class WarehouseContext:DbContext
     {
         public DbSet<Product> Products { get; set; }
+        public DbSet<ShopCart> ShopCarts { get; set; }
 
         public WarehouseContext() 
         { 
-            Database.EnsureDeleted();
+           // Database.EnsureDeleted();
             Database.EnsureCreated();
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

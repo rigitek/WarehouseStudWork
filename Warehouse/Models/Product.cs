@@ -13,5 +13,7 @@ namespace Warehouse.Models
         public string Title {  get; set; }
         public int Amount { get; set; }
         public double Price { get; set; }
+
+        public ShopCart? ShopCart { get; set; }
     }
 }
