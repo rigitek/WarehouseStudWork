@@ -15,5 +15,6 @@ namespace Warehouse.Models
         public double Price { get; set; }
 
         public ShopCart? ShopCart { get; set; }
+       
     }
 }

@@ -42,26 +42,18 @@ namespace Warehouse.Windows.Client
             Product? product = productsGrid.SelectedItem as Product;
             if (product is null) return;
 
-            AddProductInShopCartWindow AddProductInShopCartWindow = new AddProductInShopCartWindow(new Product{
-
-                Id = product.Id,
-                Title = product.Title,
-                Amount = product.Amount,
-                Price = product.Price
-            });
-
-            if (AddProductInShopCartWindow.ShowDialog() == true)
-            {
 
                 ShopCart shopCart = new ShopCart();
                 shopCart.Product = product;
-               
+            shopCart.ProductPrice = product.Price;
+            shopCart.ProductAmount = 1;
 
-                db.ShopCarts.Add(shopCart);
+
+            db.ShopCarts.Add(shopCart);
                 db.SaveChanges();
 
 
-            }
+            
 
             
         }

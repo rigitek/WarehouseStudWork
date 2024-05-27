@@ -9,9 +9,10 @@
     <Grid>
         <Menu>
             <MenuItem Header="Назад" Click="Back_Click"/>
-            <MenuItem Header="Оформить заказ"/>
-            <MenuItem Header="Удалить из корзины"/>
-
+            <MenuItem Header="Оформить заказ" Click="AddOrder_Click"/>
+            <MenuItem Header="Удалить из корзины" Click="Delete_Click"/>
+            <MenuItem Header="+" Click="PlusAmount_Click"/>
+            <MenuItem Header="-" Click="MinusAmount_Click"/>
         </Menu>
         <ListBox x:Name="shopCartGrid" ItemsSource="{Binding}" Margin="0 20 0 0">
             
@@ -23,14 +24,26 @@
                         </TextBlock>
                         
                         <TextBlock FontSize="20">
-                        <Run Text="{Binding ProductAmount}" />
+                        <Run Text="{Binding Product.Amount}" />
                         <Run Text="шт. в наличии" />
                         </TextBlock>
                         <TextBlock FontSize="20">
-                        <Run Text="{Binding ProductPrice}" />
+                        <Run Text="{Binding Product.Price}" />
                         <Run Text="Рублей"  />
                         </TextBlock>
-                        
+                        <TextBlock FontSize="20">
+<Run Text="Заказать"  />
+                            <Run Text="{Binding ProductAmount}" />
+<Run Text="Шт."  />
+                            
+                        </TextBlock>
+                        <TextBlock FontSize="20">
+<Run Text="Сумма:"  />
+                            <Run Text="{Binding ProductPrice}" />
+<Run Text="руб."  />
+
+                        </TextBlock>
+
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

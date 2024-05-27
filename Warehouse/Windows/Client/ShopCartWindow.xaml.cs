@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,6 +15,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Warehouse.Models;
+using Warehouse.Windows.Admin;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Warehouse.Windows.Client
 {
@@ -27,8 +30,6 @@ namespace Warehouse.Windows.Client
         {
             InitializeComponent();
             this.Loaded += ShopCartWindow_Loaded;
-
-            
         }
 
         private void ShopCartWindow_Loaded(object sender, RoutedEventArgs e)
@@ -36,23 +37,71 @@ namespace Warehouse.Windows.Client
             db.Products.Load();
             db.ShopCarts.Load();
             DataContext = db.ShopCarts.Local.ToObservableCollection();
-            
-           
         }
 
-        private void AddShopCart_Click(object sender, RoutedEventArgs e)
+        private void AddOrder_Click(object sender, RoutedEventArgs e)
         {
-            //ShopCart? shopCart = shopCartGrid.SelectedItem as ShopCart;
-            //if (shopCart is null) return;
+            var shopCarts = db.ShopCarts;
+
+            foreach (ShopCart cart in shopCarts)
+            {
+                Order order = new Order { 
+                Date=DateTime.Now,
+                Price=cart.ProductPrice,
+                ShopCarts=cart.Product
+                };
+                
+            }
 
             //Order shopCart = new ShopCart();
             //shopCart.Product = product;
 
-            //db.ShopCarts.Add(shopCart);
+            //db.Order.AddRange( );
             //db.SaveChanges();
 
         }
 
+        private void PlusAmount_Click(object sender, RoutedEventArgs e)
+        {
+            ShopCart? shopCart = shopCartGrid.SelectedItem as ShopCart;
+            if (shopCart is null) return;
+
+            shopCart = db.ShopCarts.Find(shopCart.Id);
+            if (shopCart != null && shopCart.ProductAmount < shopCart.Product.Amount)
+            {
+                shopCart.ProductAmount += 1;
+                shopCart.ProductPrice=shopCart.Product.Price*shopCart.ProductAmount;
+
+                db.SaveChanges();
+                shopCartGrid.Items.Refresh();
+            }
+        }
+
+        private void MinusAmount_Click(object sender, RoutedEventArgs e)
+        {
+            ShopCart? shopCart = shopCartGrid.SelectedItem as ShopCart;
+            if (shopCart is null) return;
+
+            shopCart = db.ShopCarts.Find(shopCart.Id);
+            if (shopCart != null && shopCart.ProductAmount!=1 )
+            {
+                shopCart.ProductAmount -= 1;
+                shopCart.ProductPrice = shopCart.Product.Price * shopCart.ProductAmount;
+
+                db.SaveChanges();
+                shopCartGrid.Items.Refresh();
+            }
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            // получаем выделенный объект
+            ShopCart? shopCart = shopCartGrid.SelectedItem as ShopCart;
+            // если ни одного объекта не выделено, выходим
+            if (shopCart is null) return;
+            db.ShopCarts.Remove(shopCart);
+            db.SaveChanges();
+        }
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
