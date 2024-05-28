@@ -14,7 +14,7 @@
             <MenuItem Header="+" Click="PlusAmount_Click"/>
             <MenuItem Header="-" Click="MinusAmount_Click"/>
             <MenuItem Header="Дата доставки">
-                <DatePicker x:Name="Date"/>
+                <DatePicker  x:Name="Date"/>
             </MenuItem>
         </Menu>
         <ListBox x:Name="shopCartGrid" ItemsSource="{Binding}" Margin="0 20 0 0">
