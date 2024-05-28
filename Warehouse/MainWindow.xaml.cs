@@ -19,7 +19,7 @@ namespace Warehouse
     {
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent(); 
         }
 
         private void Client_Click(object sender, RoutedEventArgs e)

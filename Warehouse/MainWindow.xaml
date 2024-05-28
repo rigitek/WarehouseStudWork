@@ -21,7 +21,7 @@
             Content="Администратор"
             Margin="5"
             Height="40"
-            Click="Admin_Click"/>
+            Click="Admin_Click"/> 
         </StackPanel>
     </Grid>
 </Window>

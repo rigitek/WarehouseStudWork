@@ -15,8 +15,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Warehouse.Models;
-using Warehouse.Windows.Admin;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Warehouse.Windows.Client
 {
@@ -41,17 +39,14 @@ namespace Warehouse.Windows.Client
 
         private void AddOrder_Click(object sender, RoutedEventArgs e)
         {
-            var shopCarts = db.ShopCarts;
+            ShopCart? shopCart = shopCartGrid.SelectedItem as ShopCart;
 
-            foreach (ShopCart cart in shopCarts)
-            {
-                Order order = new Order { 
-                Date=DateTime.Now,
-                Price=cart.ProductPrice,
-                ShopCarts=cart.Product
+            
+                Order order = new Order{
+                    Products = shopCart.Product,
                 };
-                
-            }
+            
+            
 
             //Order shopCart = new ShopCart();
             //shopCart.Product = product;
