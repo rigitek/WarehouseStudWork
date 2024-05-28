@@ -34,9 +34,9 @@ namespace Warehouse.Windows
 
         private void Delivery_Click(object sender, RoutedEventArgs e)
         {
-            //AdminWindow adminWindow = new AdminWindow();
-            //this.Close();
-            //adminWindow.Show();
+            OrdersWindow ordersWindow = new OrdersWindow();
+            this.Close();
+            ordersWindow.Show();
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)

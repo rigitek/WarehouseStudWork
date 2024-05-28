@@ -1,11 +1,11 @@
-﻿<Window x:Class="Warehouse.Windows.Client.OrdersWindow"
+﻿<Window x:Class="Warehouse.Windows.Admin.OrdersWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Warehouse.Windows.Client"
+        xmlns:local="clr-namespace:Warehouse.Windows.Admin"
         mc:Ignorable="d"
-        Title="OrdersWindow" Height="400" Width="500">
+        Title="OrdersWindow" Height="450" Width="800">
     <Grid>
         <Menu>
             <MenuItem Header="Назад" Click="Back_Click"/>
@@ -17,7 +17,7 @@
 
         </Menu>
         <ListBox x:Name="ordersGrid" ItemsSource="{Binding}" Margin="0 20 0 0">
-            
+
             <ListBox.ItemTemplate >
                 <DataTemplate>
                     <StackPanel >
@@ -36,7 +36,7 @@
                          <Run Text="Рублей"  />
                         </TextBlock>
 
-                        
+
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

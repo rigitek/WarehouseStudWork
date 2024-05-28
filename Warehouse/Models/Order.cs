@@ -12,9 +12,11 @@ namespace Warehouse.Models
         public DateTime Date { get; set; }
         public double Price { get; set; }
         public int Amount { get; set; }
-        public List<Product> Products { get; set; }
+        
+       
+        public Product? Product { get; set; }
 
-    
+
 
     }
 }

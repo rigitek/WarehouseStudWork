@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Warehouse.Models;
 
-namespace Warehouse.Windows.Client
+namespace Warehouse.Windows.Admin
 {
     /// <summary>
     /// Логика взаимодействия для OrdersWindow.xaml
@@ -32,16 +32,16 @@ namespace Warehouse.Windows.Client
         {
             db.Orders.Load();
             db.Products.Load();
-            DataContext = db.Orders.Local.ToObservableCollection().Where(x=>x.Date==DatePick.SelectedDate);
+            DataContext = db.Orders.Local.ToObservableCollection().Where(x => x.Date == DatePick.SelectedDate);
 
-            
+
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            ClientWindow clientWindow = new ClientWindow();
+            AdminWindow adminWindow = new AdminWindow();
             this.Close();
-            clientWindow.Show();
+            adminWindow.Show();
         }
 
         private void DatePick_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
@@ -51,4 +51,3 @@ namespace Warehouse.Windows.Client
         }
     }
 }
-

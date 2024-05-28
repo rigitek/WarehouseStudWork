@@ -24,6 +24,8 @@ namespace Warehouse.Windows.Client
     public partial class ShopCartWindow : Window
     {
         WarehouseContext db = new WarehouseContext();
+
+        List<ShopCart> shopCart;
         public ShopCartWindow()
         {
             InitializeComponent();
@@ -35,33 +37,32 @@ namespace Warehouse.Windows.Client
             db.Products.Load();
             db.ShopCarts.Load();
             DataContext = db.ShopCarts.Local.ToObservableCollection();
+
+            shopCart=db.ShopCarts.ToList();
         }
 
         private void AddOrder_Click(object sender, RoutedEventArgs e)
         {
-            ShopCart? shopCart = shopCartGrid.SelectedItem as ShopCart;
+            
 
+            foreach (ShopCart shopCarts in shopCart)
+            {
+                Order order = new Order
+                {
+                    Date = Date.SelectedDate.Value,
+                    Price = shopCarts.ProductPrice,
+                    Amount = shopCarts.ProductAmount,
+                    Product = shopCarts.Product
+                };
 
-            if (shopCart is null) return;
+                db.Orders.Add(order);
+                
 
+                db.ShopCarts.Remove(shopCarts);
+                db.SaveChanges();
+            }
 
-            Order order = new Order();
-            order.Date = Date.SelectedDate.Value;
-            order.Products = db.Products.Where(x=>x.Id==shopCart.ProductId).ToList();
-            order.Price = shopCart.ProductPrice;
-            order.Amount = shopCart.ProductAmount;
-
-
-            db.Orders.Add(order);
-            db.SaveChanges();
-
-
-
-            //Order shopCart = new ShopCart();
-            //shopCart.Product = product;
-
-            //db.Order.AddRange( );
-            //db.SaveChanges();
+            
 
         }
 
