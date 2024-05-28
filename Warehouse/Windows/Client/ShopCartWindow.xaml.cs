@@ -41,12 +41,21 @@ namespace Warehouse.Windows.Client
         {
             ShopCart? shopCart = shopCartGrid.SelectedItem as ShopCart;
 
-            
-                Order order = new Order{
-                    Products = shopCart.Product,
-                };
-            
-            
+
+            if (shopCart is null) return;
+
+
+            Order order = new Order();
+            order.Date = Date.SelectedDate.Value;
+            order.Products = db.Products.Where(x=>x.Id==shopCart.ProductId).ToList();
+            order.Price = shopCart.ProductPrice;
+            order.Amount = shopCart.ProductAmount;
+
+
+            db.Orders.Add(order);
+            db.SaveChanges();
+
+
 
             //Order shopCart = new ShopCart();
             //shopCart.Product = product;

@@ -38,7 +38,9 @@ namespace Warehouse.Windows
         }
         private void Delivery_Click(object sender, RoutedEventArgs e)
         {
-            
+            OrdersWindow ordersWindow = new OrdersWindow();
+            this.Close();
+            ordersWindow.Show();
         }
         private void Back_Click(object sender, RoutedEventArgs e)
         {

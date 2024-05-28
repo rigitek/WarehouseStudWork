@@ -14,5 +14,7 @@ namespace Warehouse.Models
         public int Amount { get; set; }
         public List<Product> Products { get; set; }
 
+    
+
     }
 }
