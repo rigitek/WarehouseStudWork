@@ -32,6 +32,9 @@ namespace Warehouse.Windows.Client
         {
             db.Orders.Load();
             db.Products.Load();
+
+            DatePick.SelectedDate = DateTime.Today;
+
             DataContext = db.Orders.Local.ToObservableCollection().Where(x=>x.Date==DatePick.SelectedDate);
 
             

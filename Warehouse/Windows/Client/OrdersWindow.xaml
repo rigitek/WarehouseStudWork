@@ -9,14 +9,12 @@
     <Grid>
         <Menu>
             <MenuItem Header="Назад" Click="Back_Click"/>
-            <MenuItem Header="Выбрать дату доставки">
-                <DatePicker x:Name="DatePick" SelectedDateChanged="DatePick_SelectedDateChanged"/>
-            </MenuItem>
+            <MenuItem Header="Cумма доставки:" IsEnabled="False"/>
             <MenuItem x:Name="Sum" IsEnabled="False"/>
             <MenuItem Header="Рублей" IsEnabled="False"/>
 
         </Menu>
-        <ListBox x:Name="ordersGrid" ItemsSource="{Binding}" Margin="0 20 0 0">
+        <ListBox x:Name="ordersGrid" ItemsSource="{Binding}" Margin="0 20 0 25">
             
             <ListBox.ItemTemplate >
                 <DataTemplate>
@@ -41,5 +39,9 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <UniformGrid Columns="2" VerticalAlignment="Bottom">
+            <TextBlock Text="Дата доставки:" FontSize="15" HorizontalAlignment="Center"/>
+            <DatePicker x:Name="DatePick" SelectedDateChanged="DatePick_SelectedDateChanged"/>
+        </UniformGrid>
     </Grid>
 </Window>
