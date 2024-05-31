@@ -39,6 +39,8 @@ namespace Warehouse.Windows.Client
             DataContext = db.ShopCarts.Local.ToObservableCollection();
 
             shopCart=db.ShopCarts.ToList();
+
+            DatePick.SelectedDate=DateTime.Today;
         }
 
         private void AddOrder_Click(object sender, RoutedEventArgs e)
@@ -49,7 +51,7 @@ namespace Warehouse.Windows.Client
             {
                 Order order = new Order
                 {
-                    Date = Date.SelectedDate.Value,
+                    Date = DatePick.SelectedDate.Value,
                     Price = shopCarts.ProductPrice,
                     Amount = shopCarts.ProductAmount,
                     Product = shopCarts.Product
