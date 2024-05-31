@@ -25,24 +25,36 @@ namespace Warehouse.Windows
             InitializeComponent();
         }
 
+        //метод для перехода на окно продуктов
         private void Products_Click(object sender, RoutedEventArgs e)
         {
+            //создание обьекта окна
             ProductsWindow productsWindow = new ProductsWindow();
+            //закрытие окна, которое открыто сейчас
             this.Close();
+            //открытие ранее созданного объекта окна
             productsWindow.Show();
         }
 
+        //метод для перехода на окно заказов
         private void Delivery_Click(object sender, RoutedEventArgs e)
         {
+            //создание обьекта окна
             OrdersWindow ordersWindow = new OrdersWindow();
+            //закрытие окна, которое открыто сейчас
             this.Close();
+            //открытие ранее созданного объекта окна
             ordersWindow.Show();
         }
 
+        //метод для перехода в главное меню
         private void Back_Click(object sender, RoutedEventArgs e)
         {
+            //создание обьекта окна
             MainWindow mainWindow = new MainWindow();
+            //закрытие окна, которое открыто сейчас
             this.Close();
+            //открытие ранее созданного объекта окна
             mainWindow.Show();
         }
     }

@@ -5,13 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Warehouse.Windows.Admin"
         mc:Ignorable="d"
-        Title="OrdersWindow" Height="450" Width="800">
+        Title="OrdersWindow" Height="400" Width="500">
     <Grid>
         <Menu>
             <MenuItem Header="Назад" Click="Back_Click"/>
-            <MenuItem Header="Выбрать дату доставки">
-                <DatePicker x:Name="DatePick" SelectedDateChanged="DatePick_SelectedDateChanged"/>
-            </MenuItem>
+            <MenuItem Header="Cумма доставки:" IsEnabled="False"/>
             <MenuItem x:Name="Sum" IsEnabled="False"/>
             <MenuItem Header="Рублей" IsEnabled="False"/>
 
@@ -41,5 +39,9 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <UniformGrid Columns="2" VerticalAlignment="Bottom">
+            <TextBlock Text="Дата доставки:" FontSize="15" HorizontalAlignment="Center"/>
+            <DatePicker x:Name="DatePick" SelectedDateChanged="DatePick_SelectedDateChanged"/>
+        </UniformGrid>
     </Grid>
 </Window>
