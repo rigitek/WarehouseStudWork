@@ -30,14 +30,15 @@ namespace Warehouse.Windows.Client
 
         private void OrdersWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            //загрузка данных из бд
             db.Orders.Load();
             db.Products.Load();
 
+            //выбор сегодняшней даты по умолчанию
             DatePick.SelectedDate = DateTime.Today;
 
+            //контекст данных
             DataContext = db.Orders.Local.ToObservableCollection().Where(x=>x.Date==DatePick.SelectedDate);
-
-            
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -49,7 +50,9 @@ namespace Warehouse.Windows.Client
 
         private void DatePick_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
+            //выводит только заказы с выбранной датой
             DataContext = db.Orders.Local.ToObservableCollection().Where(x => x.Date == DatePick.SelectedDate);
+            //сумма всех заказов в выбранную дату
             Sum.Header = db.Orders.Where(x => x.Date == DatePick.SelectedDate).Sum(x => x.Price).ToString();
         }
     }

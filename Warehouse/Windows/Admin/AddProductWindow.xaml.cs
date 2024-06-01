@@ -21,17 +21,20 @@ namespace Warehouse.Windows.Admin
     public partial class AddProductWindow : Window
     {
         public Product Product { get; set; }
+
+        //передача объекта в конструктор
         public AddProductWindow(Product product)
         {
             InitializeComponent();
 
             Product = product;
+            //передача объекта в контекст
             DataContext = Product;
         }
 
         void Accept_Click(object sender, RoutedEventArgs e)
         {
-
+            //результат нажатия на кнопку добавить
             DialogResult = true;
         }
     }

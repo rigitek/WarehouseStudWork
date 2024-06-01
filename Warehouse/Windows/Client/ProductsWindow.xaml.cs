@@ -31,33 +31,30 @@ namespace Warehouse.Windows.Client
 
         private void ProductsWindow_Loaded(object sender, RoutedEventArgs e)
         {
-
+            //загрузка данных из бд
             db.Products.Load();
-            DataContext = db.Products.Local.ToObservableCollection();
 
+            //привязка контекста данных
+            DataContext = db.Products.Local.ToObservableCollection();
         }
 
         private void AddShopCart_Click(object sender, RoutedEventArgs e)
         {
+            //передача выбранного объекта
             Product? product = productsGrid.SelectedItem as Product;
             if (product is null) return;
 
-
-                ShopCart shopCart = new ShopCart();
-                shopCart.Product = product;
+            //создание нового объекта и передача параметров
+            ShopCart shopCart = new ShopCart();
+            shopCart.Product = product;
             shopCart.ProductPrice = product.Price;
             shopCart.ProductAmount = 1;
 
-
+            //добавление данных в бд
             db.ShopCarts.Add(shopCart);
-                db.SaveChanges();
-
-
-            
-
-            
+            //сохранение изменений
+            db.SaveChanges();
         }
-    
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {

@@ -21,6 +21,7 @@ namespace Warehouse.Windows.Admin
     /// </summary>
     public partial class OrdersWindow : Window
     {
+        //для работы с бд
         WarehouseContext db = new WarehouseContext();
         public OrdersWindow()
         {
@@ -28,15 +29,18 @@ namespace Warehouse.Windows.Admin
             this.Loaded += OrdersWindow_Loaded;
         }
 
+        //срабатывает при загрузке окна
         private void OrdersWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            //загрузка данных из бд
             db.Orders.Load();
             db.Products.Load();
+
+            //передача данных в контекст
             DataContext = db.Orders.Local.ToObservableCollection().Where(x => x.Date == DatePick.SelectedDate);
-
-
         }
 
+        //возвращение обратно в меню
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             AdminWindow adminWindow = new AdminWindow();
@@ -44,9 +48,12 @@ namespace Warehouse.Windows.Admin
             adminWindow.Show();
         }
 
+        //при выборе дате срабатывает
         private void DatePick_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
+            //выводит только заказы с выбранной датой
             DataContext = db.Orders.Local.ToObservableCollection().Where(x => x.Date == DatePick.SelectedDate);
+            //сумма всех заказов в выбранную дату
             Sum.Header = db.Orders.Where(x => x.Date == DatePick.SelectedDate).Sum(x => x.Price).ToString();
         }
     }
