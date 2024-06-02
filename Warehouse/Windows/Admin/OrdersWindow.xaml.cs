@@ -36,6 +36,9 @@ namespace Warehouse.Windows.Admin
             db.Orders.Load();
             db.Products.Load();
 
+            //выбор сегодняшней даты по умолчанию
+            DatePick.SelectedDate = DateTime.Today;
+
             //передача данных в контекст
             DataContext = db.Orders.Local.ToObservableCollection().Where(x => x.Date == DatePick.SelectedDate);
         }
